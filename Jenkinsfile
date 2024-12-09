@@ -18,7 +18,7 @@ pipeline {
                 createWorkspace 'dev'
                 runTerraformPlan 'dev.tfvars'
                 runTerraformApply 'dev.tfvars'
-                runTerraformDestroy 'dev.tfvars' 'true'
+                runTerraformDestroy 'dev.tfvars true'
             }
         }
         stage('Deploying To UAT Environment') {
