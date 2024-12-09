@@ -5,13 +5,14 @@ pipeline {
         stage('Creating Workspaces') {
             steps {
                 echo 'Creating Workspaces Dev UAT & Prod'
-                createWorkspace
+                createWorkspace 'dev'
             }
         }
         stage('Deploying To DEV Environment') {
             steps {
                 echo 'Deploying To DEV Environment..'
                 sayHello 'MEGASTAR'
+                createWorkspace 'dev'
                 runTerraform 'dev.tfvars'
             }
         }
