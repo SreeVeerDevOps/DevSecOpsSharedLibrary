@@ -5,6 +5,7 @@ pipeline {
         stage('Creating Workspaces') {
             steps {
                 echo 'Creating Workspaces Dev UAT & Prod'
+                sh 'rm -rf .terraform && rm -rf terraform.tfstate.d' 
                 createWorkspace 'dev'
             }
         }
