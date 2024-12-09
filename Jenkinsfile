@@ -31,7 +31,7 @@ pipeline {
                 createWorkspace 'uat'
                 runTerraformPlan 'uat.tfvars'
                 runTerraformApply 'uat.tfvars'
-                runTerraformDestroy 'uat.tfvars' 'true'
+                runTerraformDestroy 'tfvars=uat.tfvars letsdestroy=false'
             }
         }
         stage('Deploying To PROD Environment') {
@@ -44,7 +44,7 @@ pipeline {
                 createWorkspace 'prod'
                 runTerraformPlan 'prod.tfvars'
                 runTerraformApply 'prod.tfvars'
-                runTerraformDestroy 'prod.tfvars' 'true'
+                runTerraformDestroy 'tfvars=prod.tfvars letsdestroy=false'
             }
         }
     }
