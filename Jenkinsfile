@@ -9,9 +9,9 @@ pipeline {
             }
         }
         stage('Deploying To DEV Environment') {
-            when {
-                branch 'development'
-            }
+            // when {
+            //     branch 'development'
+            // }
             steps {
                 echo 'Deploying To DEV Environment..'
                 sayHello 'MEGASTAR'
@@ -21,9 +21,9 @@ pipeline {
             }
         }
         stage('Deploying To UAT Environment') {
-            when {
-                branch 'uat'
-            }
+            // when {
+            //     branch 'uat'
+            // }
             steps {
                 echo 'Deploying To UAT Environment..'
                 sayHello 'MEGASTAR'
@@ -32,9 +32,9 @@ pipeline {
             }
         }
         stage('Deploying To PROD Environment') {
-            when {
-                branch 'production'
-            }
+            // when {
+            //     branch 'production'
+            // }
             steps {
                 echo 'Deploying To PROD Environment..'
                 sayHello 'MEGASTAR'
