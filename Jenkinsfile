@@ -28,8 +28,10 @@ pipeline {
             steps {
                 echo 'Deploying To UAT Environment..'
                 sayHello 'MEGASTAR'
+                createWorkspace 'uat'
                 runTerraformPlan 'uat.tfvars'
                 runTerraformApply 'uat.tfvars'
+                runTerraformDestroy 'uat.tfvars' 'true'
             }
         }
         stage('Deploying To PROD Environment') {
@@ -39,8 +41,10 @@ pipeline {
             steps {
                 echo 'Deploying To PROD Environment..'
                 sayHello 'MEGASTAR'
+                createWorkspace 'prod'
                 runTerraformPlan 'prod.tfvars'
                 runTerraformApply 'prod.tfvars'
+                runTerraformDestroy 'prod.tfvars' 'true'
             }
         }
     }
