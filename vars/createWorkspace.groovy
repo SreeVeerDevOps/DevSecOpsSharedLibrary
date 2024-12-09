@@ -1,8 +1,5 @@
-def call(String environ = 'human') {
-  echo "Creating Terraform Workspaces...."
+def call(String workspace = 'dev') {
+  echo "Creating Terraform ${workspace} Workspaces...."
   sh "terraform version"
-  sh "terraform workspace create dev || terraform workspace select dev"
-  sh "terraform workspace create uat || terraform workspace select uat"
-  sh "terraform workspace create || terraform workspace select prod"
-  sh "terraform plan --var-file ${environ}"
+  sh "terraform workspace create ${workspace} || terraform workspace select ${workspace}"
 }

@@ -2,6 +2,12 @@
 pipeline {
     agent any
     stages {
+        stage('Creating Workspaces') {
+            steps {
+                echo 'Creating Workspaces Dev UAT & Prod'
+                createWorkspace
+            }
+        }
         stage('Deploying To DEV Environment') {
             steps {
                 echo 'Deploying To DEV Environment..'
