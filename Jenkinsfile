@@ -13,21 +13,21 @@ pipeline {
                 echo 'Deploying To DEV Environment..'
                 sayHello 'MEGASTAR'
                 createWorkspace 'dev'
-                runTerraform 'dev.tfvars'
+                runTerraformPlan 'dev.tfvars'
             }
         }
         stage('Deploying To UAT Environment') {
             steps {
                 echo 'Deploying To UAT Environment..'
                 sayHello 'MEGASTAR'
-                runTerraform 'uat.tfvars'
+                runTerraformPlan 'uat.tfvars'
             }
         }
         stage('Deploying To PROD Environment') {
             steps {
                 echo 'Deploying To PROD Environment..'
                 sayHello 'MEGASTAR'
-                runTerraform 'prod.tfvars'
+                runTerraformPlan 'prod.tfvars'
             }
         }
     }
