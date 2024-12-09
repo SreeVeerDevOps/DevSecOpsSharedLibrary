@@ -3,8 +3,9 @@ def call(String tfvars = 'dev.tfvars', String letsdestroy = false) {
   sh "terraform version"
   sh "terraform init && terraform fmt && terraform validate"
   sh """
-  if (letsdestroy=true){
+  if (letsdestroy=true)
+  then
   terraform destroy --var-file ${tfvars} --auto-approve"
-  }
+  fi
   """
 }
