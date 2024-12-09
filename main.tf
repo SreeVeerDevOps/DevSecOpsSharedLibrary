@@ -11,6 +11,11 @@ terraform {
       source = "hashicorp/aws"
     }
   }
+  backend "s3" {
+    bucket = "devsecopsb42terraformprod"
+    key    = "sharedlibrary.tfstate"
+    region = "us-east-1"
+  }
 }
 
 resource "aws_vpc" "default" {
