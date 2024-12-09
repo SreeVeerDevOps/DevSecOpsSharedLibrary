@@ -12,7 +12,7 @@ terraform {
     }
   }
   backend "s3" {
-    bucket = "devsecopsb42terraformprod"
+    bucket = "devsecopsb43tfstate"
     key    = "sharedlibrary.tfstate"
     region = "us-east-1"
   }
