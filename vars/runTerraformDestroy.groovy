@@ -5,7 +5,7 @@ def call(String tfvars = 'dev.tfvars', String letsdestroy = false) {
   sh """
   if (letsdestroy=true)
   then
-  terraform destroy --var-file ${tfvars} --auto-approve"
+  terraform destroy --var-file ${tfvars} --auto-approve
   fi
   """
 }
