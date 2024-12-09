@@ -1,6 +1,6 @@
-def call(String environ = 'human') {
+def call(String tfvars = 'dev.tfvars') {
   echo "Running Terraform Code...."
   sh "terraform version"
   sh "terraform init && terraform fmt && terraform validate"
-  sh "terraform plan --var-file ${environ}"
+  sh "terraform plan --var-file ${tfvars}"
 }
