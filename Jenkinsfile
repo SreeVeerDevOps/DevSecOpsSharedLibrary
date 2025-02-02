@@ -1,4 +1,5 @@
-@Library('terraform-shared-library') _
+//@Library('terraform-shared-library-1') _
+@Library(['terraform-shared-library-1@main', 'terraform-shared-library-2@main']) _
 pipeline {
     agent any
     stages {
@@ -9,9 +10,9 @@ pipeline {
             }
         }
         stage('Deploying To DEV Environment') {
-            // when {
-            //     branch 'development'
-            // }
+            when {
+                branch 'development'
+            }
             steps {
                 echo 'Deploying To DEV Environment..'
                 sayHello 'MEGASTAR'
@@ -22,9 +23,9 @@ pipeline {
             }
         }
         stage('Deploying To UAT Environment') {
-            // when {
-            //     branch 'uat'
-            // }
+            when {
+                branch 'uat'
+            }
             steps {
                 echo 'Deploying To UAT Environment..'
                 sayHello 'MEGASTAR'
@@ -35,9 +36,9 @@ pipeline {
             }
         }
         stage('Deploying To PROD Environment') {
-            // when {
-            //     branch 'production'
-            // }
+            when {
+                branch 'production'
+            }
             steps {
                 echo 'Deploying To PROD Environment..'
                 sayHello 'MEGASTAR'
@@ -45,6 +46,19 @@ pipeline {
                 runTerraformPlan 'prod.tfvars'
                 runTerraformApply 'prod.tfvars'
                 runTerraformDestroy 'tfvars=prod.tfvar, letsdestroy=false'
+            }
+        }
+        stage('Deploying To MAIN Environment') {
+            when {
+                branch 'main'
+            }
+            steps {
+                echo 'Deploying To PROD Environment..'
+                sayHello 'MEGASTAR'
+                createWorkspace 'dev'
+                runTerraformPlan 'dev.tfvars'
+                runTerraformApply 'dev.tfvars'
+                runTerraformDestroy 'tfvars=dev.tfvar, letsdestroy=false'
             }
         }
     }
