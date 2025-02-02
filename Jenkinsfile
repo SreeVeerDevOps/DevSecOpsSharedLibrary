@@ -49,11 +49,8 @@ pipeline {
             }
         }
         stage('Deploying To MAIN Environment') {
-            when {
-                branch 'main'
-            }
             steps {
-                echo 'Deploying To PROD Environment..'
+                echo 'Deploying To MAIN Environment..'
                 sayHello 'MEGASTAR'
                 createWorkspace 'dev'
                 runTerraformPlan 'dev.tfvars'
